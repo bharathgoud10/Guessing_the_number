@@ -1,0 +1,50 @@
+
+import java.util.*;
+class Guess_the_number{
+    int input;
+    int userin;
+    int guesses=0;
+    Guess_the_number(){
+       Random r=new Random();
+       this.input=r.nextInt(50);
+    }
+    int getGuesses(int guesses){
+        return guesses;
+    }
+    void setGuesses(int guesses){
+        this.guesses=guesses;
+    }
+    void takein(){
+        System.out.println("Guess the number in the range 0-50:");
+        Scanner sc=new Scanner(System.in);
+        this.userin=sc.nextInt();
+    }
+    boolean isCorrect(){
+        ++guesses;
+        if(userin==input){
+        System.out.printf("Guess correctly,the number is %d,the total guesses are %d",input,guesses);
+        return true;
+        }
+        else if(userin<input){
+            System.out.println("too less");
+        }
+        else{
+            System.out.println("too high");
+        }
+        return false;
+    }
+    
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        Guess_the_number ob = new Guess_the_number();
+        
+        boolean b=false;
+        while(!b){
+            ob.takein();
+            b=ob.isCorrect();
+        }
+    }
+}
